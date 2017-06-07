@@ -87,6 +87,11 @@ namespace WindowsFormsApp2
                 Customer c = new Customer(username, Reverse(username));
                 registerTextBoxUsername.Text = "Your new password: " + Reverse(username);
             }
+            else
+            {
+                registerLabelMessage.ForeColor = Color.Red;
+                registerTextBoxUsername.Text = "Customer already exists !";
+            }
             
         }
 

@@ -29,7 +29,8 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // get Customer en zet in object
+            // daarna Customer.Buy(Product p) aanroepen.
         }
 
         private void Store_Load(object sender, EventArgs e)
