@@ -7,14 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.BackendSysteem;
 
 namespace WindowsFormsApp2
 {
-    public partial class Store : Form
+    public partial class StoreForm : Form
     {
-        public Store()
+        private IService BackendService { get; set; }
+
+        public StoreForm()
         {
             InitializeComponent();
+            BackendService = new ServiceClient();
+
+            var x = BackendService.GetAvailableProducts();
+            var x1 = BackendService.GetInventory("Victor");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -36,6 +43,12 @@ namespace WindowsFormsApp2
         private void Store_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // SELECT ProductName, Price FROM Products WHERE Aantal > 0
+            // SELECT ProductName, Amount FROM CustomerProduct Where Username == ""
         }
     }
 }

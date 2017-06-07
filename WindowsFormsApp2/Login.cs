@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.BackendSysteem;
 
 namespace WindowsFormsApp2
 {
     public partial class LoginForm : Form
     {
+        private IService BackendService { get; set; }
+
         public LoginForm()
         {
             InitializeComponent();
+            BackendService = new ServiceClient();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,10 +32,28 @@ namespace WindowsFormsApp2
             {
                 loginLabelMessage.Text = "Username or Password field is still empty";
             }
+            else
+            {
+                if (BackendService.Login(loginTextBoxUsername.Text, loginTextBoxPassword.Text))
+                {
+                    loginLabelMessage.Text = "Success";
+
+                    this.Hide();
+                    var form = new StoreForm();
+                    form.Show();
+                }
+                else
+                {
+                    loginLabelMessage.Text = "Faal";
+                }
+            }
+
+            
+
+
             // else -> check of username is geregistreerd anders loginLabelMessage.Text = "Customer not registered";
             // else -> user en wachtwoord combinatie komen niet juist overeen loginLabelMessage.Text = "User and Password combination not correct";
             // else -> logged succesfully in. -> goto Store Form. and get Customer info. saldo, producten in inventory en producten beschikbaar.
-
 
         }
 
@@ -65,32 +87,28 @@ namespace WindowsFormsApp2
             
         }
 
-        public static string Reverse(string s)
-        {
-            char[] charArray = s.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
-        }
-
+       
 
         private void registerButton1_Click(object sender, EventArgs e)
         {
             String username = registerTextBoxUsername.Text;
             if (username == "")
             {
-                registerLabelMessage.ForeColor = Color.Red;
-                registerLabelMessage.Text = "Vul een username in";
-            }
-
-            if () // check of user bestaat in DB
-            {
-                Customer c = new Customer(username, Reverse(username));
-                registerTextBoxUsername.Text = "Your new password: " + Reverse(username);
+                //    registerLabelMessage.ForeColor = Color.Red;
+                //    registerLabelMessage.Text = "Vul een username in";
             }
             else
             {
-                registerLabelMessage.ForeColor = Color.Red;
-                registerTextBoxUsername.Text = "Customer already exists !";
+                var newPassword = BackendService.RegistreerUser(username);
+                if (!string.IsNullOrWhiteSpace(newPassword)) // check of user bestaat in DB
+                {
+                    registerLabelMessage.Text = $"Your new password: {newPassword}";
+                }
+                else
+                {
+                    registerLabelMessage.ForeColor = Color.Red;
+                    registerTextBoxUsername.Text = "Customer already exists!";
+                }
             }
             
         }
