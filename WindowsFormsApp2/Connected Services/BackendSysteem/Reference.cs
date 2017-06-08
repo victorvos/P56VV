@@ -31,6 +31,9 @@ namespace WindowsFormsApp2.BackendSysteem {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PriceField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long ProductIDField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -76,6 +79,19 @@ namespace WindowsFormsApp2.BackendSysteem {
                 if ((this.PriceField.Equals(value) != true)) {
                     this.PriceField = value;
                     this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
                 }
             }
         }
@@ -151,6 +167,67 @@ namespace WindowsFormsApp2.BackendSysteem {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserDto", Namespace="http://schemas.datacontract.org/2004/07/ServerApplication")]
+    [System.SerializableAttribute()]
+    public partial class UserDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BalanceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long UserIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Balance {
+            get {
+                return this.BalanceField;
+            }
+            set {
+                if ((this.BalanceField.Equals(value) != true)) {
+                    this.BalanceField = value;
+                    this.RaisePropertyChanged("Balance");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long UserID {
+            get {
+                return this.UserIDField;
+            }
+            set {
+                if ((this.UserIDField.Equals(value) != true)) {
+                    this.UserIDField = value;
+                    this.RaisePropertyChanged("UserID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BackendSysteem.IService")]
     public interface IService {
@@ -178,6 +255,30 @@ namespace WindowsFormsApp2.BackendSysteem {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetInventory", ReplyAction="http://tempuri.org/IService/GetInventoryResponse")]
         System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.OrderDto[]> GetInventoryAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/BuyProduct", ReplyAction="http://tempuri.org/IService/BuyProductResponse")]
+        void BuyProduct(long user_Id, long product_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/BuyProduct", ReplyAction="http://tempuri.org/IService/BuyProductResponse")]
+        System.Threading.Tasks.Task BuyProductAsync(long user_Id, long product_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetBalance", ReplyAction="http://tempuri.org/IService/GetBalanceResponse")]
+        WindowsFormsApp2.BackendSysteem.UserDto GetBalance(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetBalance", ReplyAction="http://tempuri.org/IService/GetBalanceResponse")]
+        System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.UserDto> GetBalanceAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserID", ReplyAction="http://tempuri.org/IService/GetUserIDResponse")]
+        WindowsFormsApp2.BackendSysteem.UserDto GetUserID(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUserID", ReplyAction="http://tempuri.org/IService/GetUserIDResponse")]
+        System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.UserDto> GetUserIDAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetProductID", ReplyAction="http://tempuri.org/IService/GetProductIDResponse")]
+        WindowsFormsApp2.BackendSysteem.ProductDto GetProductID(string productName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetProductID", ReplyAction="http://tempuri.org/IService/GetProductIDResponse")]
+        System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.ProductDto> GetProductIDAsync(string productName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -237,6 +338,38 @@ namespace WindowsFormsApp2.BackendSysteem {
         
         public System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.OrderDto[]> GetInventoryAsync(string username) {
             return base.Channel.GetInventoryAsync(username);
+        }
+        
+        public void BuyProduct(long user_Id, long product_Id) {
+            base.Channel.BuyProduct(user_Id, product_Id);
+        }
+        
+        public System.Threading.Tasks.Task BuyProductAsync(long user_Id, long product_Id) {
+            return base.Channel.BuyProductAsync(user_Id, product_Id);
+        }
+        
+        public WindowsFormsApp2.BackendSysteem.UserDto GetBalance(string username) {
+            return base.Channel.GetBalance(username);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.UserDto> GetBalanceAsync(string username) {
+            return base.Channel.GetBalanceAsync(username);
+        }
+        
+        public WindowsFormsApp2.BackendSysteem.UserDto GetUserID(string username) {
+            return base.Channel.GetUserID(username);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.UserDto> GetUserIDAsync(string username) {
+            return base.Channel.GetUserIDAsync(username);
+        }
+        
+        public WindowsFormsApp2.BackendSysteem.ProductDto GetProductID(string productName) {
+            return base.Channel.GetProductID(productName);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.ProductDto> GetProductIDAsync(string productName) {
+            return base.Channel.GetProductIDAsync(productName);
         }
     }
 }

@@ -30,12 +30,14 @@ namespace WindowsFormsApp2
         {
             if (loginTextBoxUsername.Text == "" || loginTextBoxPassword.Text == "")
             {
+                loginLabelMessage.ForeColor = Color.Red;
                 loginLabelMessage.Text = "Username or Password field is still empty";
             }
             else
             {
                 if (BackendService.Login(loginTextBoxUsername.Text, loginTextBoxPassword.Text))
                 {
+                    loginLabelMessage.ForeColor = Color.Red;
                     loginLabelMessage.Text = "Success";
 
                     this.Hide();
@@ -44,16 +46,10 @@ namespace WindowsFormsApp2
                 }
                 else
                 {
+                    loginLabelMessage.ForeColor = Color.Red;
                     loginLabelMessage.Text = "Faal";
                 }
             }
-
-            
-
-
-            // else -> check of username is geregistreerd anders loginLabelMessage.Text = "Customer not registered";
-            // else -> user en wachtwoord combinatie komen niet juist overeen loginLabelMessage.Text = "User and Password combination not correct";
-            // else -> logged succesfully in. -> goto Store Form. and get Customer info. saldo, producten in inventory en producten beschikbaar.
 
         }
 
@@ -94,8 +90,8 @@ namespace WindowsFormsApp2
             String username = registerTextBoxUsername.Text;
             if (username == "")
             {
-                //    registerLabelMessage.ForeColor = Color.Red;
-                //    registerLabelMessage.Text = "Vul een username in";
+                registerLabelMessage.ForeColor = Color.Red;
+                registerLabelMessage.Text = "Vul een username in !";
             }
             else
             {

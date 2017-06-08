@@ -11,6 +11,7 @@
       <xs:element minOccurs="0" name="AvailableAmount" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Price" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductID" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProductDto" nillable="true" type="tns:ProductDto" />

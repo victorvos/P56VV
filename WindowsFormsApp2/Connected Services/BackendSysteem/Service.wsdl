@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:49768/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:49768/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:49768/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ServerApplication.Models" />
+      <xsd:import schemaLocation="http://localhost:49768/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ServerApplication" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Login_InputMessage">
@@ -31,6 +32,30 @@
   <wsdl:message name="IService_GetInventory_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetInventoryResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_BuyProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuyProduct" />
+  </wsdl:message>
+  <wsdl:message name="IService_BuyProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuyProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserID" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetProductID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductID" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetProductID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductIDResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Login" message="tns:IService_Login_InputMessage" />
@@ -47,6 +72,22 @@
     <wsdl:operation name="GetInventory">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetInventory" message="tns:IService_GetInventory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetInventoryResponse" message="tns:IService_GetInventory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuyProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/BuyProduct" message="tns:IService_BuyProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/BuyProductResponse" message="tns:IService_BuyProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetBalance" message="tns:IService_GetBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetBalanceResponse" message="tns:IService_GetBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUserID" message="tns:IService_GetUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUserIDResponse" message="tns:IService_GetUserID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetProductID" message="tns:IService_GetProductID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetProductIDResponse" message="tns:IService_GetProductID_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -80,6 +121,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetInventory">
       <soap:operation soapAction="http://tempuri.org/IService/GetInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyProduct">
+      <soap:operation soapAction="http://tempuri.org/IService/BuyProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap:operation soapAction="http://tempuri.org/IService/GetBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserID">
+      <soap:operation soapAction="http://tempuri.org/IService/GetUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductID">
+      <soap:operation soapAction="http://tempuri.org/IService/GetProductID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
