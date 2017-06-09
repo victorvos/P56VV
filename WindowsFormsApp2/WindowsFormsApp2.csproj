@@ -60,7 +60,6 @@
     <Compile Include="StoreForm.Designer.cs">
       <DependentUpon>StoreForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
