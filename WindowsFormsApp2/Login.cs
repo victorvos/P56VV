@@ -40,6 +40,8 @@ namespace WindowsFormsApp2
                     loginLabelMessage.ForeColor = Color.Red;
                     loginLabelMessage.Text = "Success";
 
+                    Globals.Username = loginTextBoxUsername.Text;
+
                     this.Hide();
                     var form = new StoreForm();
                     form.Show();

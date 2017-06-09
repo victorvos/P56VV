@@ -257,10 +257,10 @@ namespace WindowsFormsApp2.BackendSysteem {
         System.Threading.Tasks.Task<WindowsFormsApp2.BackendSysteem.OrderDto[]> GetInventoryAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/BuyProduct", ReplyAction="http://tempuri.org/IService/BuyProductResponse")]
-        void BuyProduct(long user_Id, long product_Id);
+        void BuyProduct(long user_Id, long product_Id, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/BuyProduct", ReplyAction="http://tempuri.org/IService/BuyProductResponse")]
-        System.Threading.Tasks.Task BuyProductAsync(long user_Id, long product_Id);
+        System.Threading.Tasks.Task BuyProductAsync(long user_Id, long product_Id, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetBalance", ReplyAction="http://tempuri.org/IService/GetBalanceResponse")]
         WindowsFormsApp2.BackendSysteem.UserDto GetBalance(string username);
@@ -340,12 +340,12 @@ namespace WindowsFormsApp2.BackendSysteem {
             return base.Channel.GetInventoryAsync(username);
         }
         
-        public void BuyProduct(long user_Id, long product_Id) {
-            base.Channel.BuyProduct(user_Id, product_Id);
+        public void BuyProduct(long user_Id, long product_Id, int amount) {
+            base.Channel.BuyProduct(user_Id, product_Id, amount);
         }
         
-        public System.Threading.Tasks.Task BuyProductAsync(long user_Id, long product_Id) {
-            return base.Channel.BuyProductAsync(user_Id, product_Id);
+        public System.Threading.Tasks.Task BuyProductAsync(long user_Id, long product_Id, int amount) {
+            return base.Channel.BuyProductAsync(user_Id, product_Id, amount);
         }
         
         public WindowsFormsApp2.BackendSysteem.UserDto GetBalance(string username) {

@@ -129,9 +129,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.label4.Location = new System.Drawing.Point(72, 45);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(194, 17);
+            this.label4.Size = new System.Drawing.Size(154, 17);
             this.label4.TabIndex = 8;
-            this.label4.Text = "ProductName , Amount, Price";
+            this.label4.Text = "ProductName , Amount";
             // 
             // StoreForm
             // 

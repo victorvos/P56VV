@@ -52,7 +52,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Customer.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="Extensions\StringUtilities.cs" />
     <Compile Include="StoreForm.cs">
       <SubType>Form</SubType>

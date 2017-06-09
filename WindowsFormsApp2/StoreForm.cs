@@ -23,8 +23,8 @@ namespace WindowsFormsApp2
             BackendService = new ServiceClient();
 
             ProductDto[] x = BackendService.GetAvailableProducts();
-            OrderDto[] x1 = BackendService.GetInventory("Victor");
-            UserDto x2 = BackendService.GetBalance("Victor");
+            OrderDto[] x1 = BackendService.GetInventory(Globals.Username);
+            UserDto x2 = BackendService.GetBalance(Globals.Username);
 
             int valueFromDB = x2.Balance;
             string formatBalance = valueFromDB.AsCurrency();
@@ -61,7 +61,7 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserDto udto = BackendService.GetUserID("Victor");
+            UserDto udto = BackendService.GetUserID(Globals.Username);
             long UserID = udto.UserID;
 
             string getSelected = StoreProductsList.SelectedItem.ToString();
@@ -74,7 +74,7 @@ namespace WindowsFormsApp2
 
             Console.WriteLine(productID);
 
-            BackendService.BuyProduct(UserID, productID);
+            BackendService.BuyProduct(UserID, productID, 1);
 
         }
 
@@ -89,8 +89,8 @@ namespace WindowsFormsApp2
             storeInventoryList.Items.Clear();
             
             ProductDto[] x = BackendService.GetAvailableProducts();
-            OrderDto[] x1 = BackendService.GetInventory("Victor");
-            UserDto x2 = BackendService.GetBalance("Victor");
+            OrderDto[] x1 = BackendService.GetInventory(Globals.Username);
+            UserDto x2 = BackendService.GetBalance(Globals.Username);
 
             int valueFromDB = x2.Balance;
             string formatBalance = valueFromDB.AsCurrency();
