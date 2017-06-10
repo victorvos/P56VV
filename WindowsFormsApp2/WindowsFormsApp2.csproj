@@ -96,7 +96,13 @@
     <None Include="Connected Services\BackendSysteem\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\BackendSysteem\Service4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\BackendSysteem\WindowsFormsApp2.BackendSysteem.OrderDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BackendSysteem\WindowsFormsApp2.BackendSysteem.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\BackendSysteem\WindowsFormsApp2.BackendSysteem.ProductDto.datasource">

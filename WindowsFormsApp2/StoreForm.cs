@@ -63,18 +63,30 @@ namespace WindowsFormsApp2
         {
             UserDto udto = BackendService.GetUserID(Globals.Username);
             long UserID = udto.UserID;
+            UserDto x2 = BackendService.GetBalance(Globals.Username);
+
+            int balance = x2.Balance;
 
             string getSelected = StoreProductsList.SelectedItem.ToString();
             getSelected = getSelected.Split(':')[0];
 
-            Console.WriteLine(getSelected);
-
             ProductDto pdto = BackendService.GetProductID(getSelected);
             long productID = pdto.ProductID;
 
-            Console.WriteLine(productID);
+            Product p = BackendService.GetProduct(productID);
 
-            BackendService.BuyProduct(UserID, productID, 1);
+
+            if (balance - p.Price < 0)
+            {
+                storeLabelMessage.Font = new Font(storeLabelMessage.Font.FontFamily, 10);
+                storeLabelMessage.Text = "Balance too less to buy this Product";
+            }
+            else
+            {
+                BackendService.BuyProduct(UserID, productID, 1);
+            }
+
+            
 
         }
 
